@@ -4,7 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 function Navbar(props) {
     const navigate = useNavigate();
     const location = useLocation();
-    useEffect(() => {
+    useEffect(() => { 
         document.title = `iNotebook - ${location.pathname === "/" ? "Home" : location.pathname === "/about" ? "About" : location.pathname === "/login" ? "Login" :location.pathname === "/signup" ? "Signup" : ""}`
     }, [location.pathname])
     return (
