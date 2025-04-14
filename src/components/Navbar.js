@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 function Navbar(props) {
+    const navigate = useNavigate();
     const location = useLocation();
     useEffect(() => {
         document.title = `iNotebook - ${location.pathname === "/" ? "Home" : location.pathname === "/about" ? "About" : location.pathname === "/login" ? "Login" :location.pathname === "/signup" ? "Signup" : ""}`
@@ -28,7 +29,9 @@ function Navbar(props) {
                         <button className={`btn btn-danger m-1 ${localStorage.getItem('token') ? "d-block" : "d-none"}`} onClick={()=>{
                             localStorage.removeItem('token')
                             props.showAlert('You are Logged out.',"success")
-                            setTimeout(()=>window.location.href='iNotebook/login',1000)
+                            setTimeout(()=>{
+                                navigate('/login');
+                            },1000)
                         }}>Log Out</button>
                     </div>
                 </div>
