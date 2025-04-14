@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const Signup = (props) => {
+  const navigate = useNavigate();
   const [creds, setCreds] = useState({ name: "", email: "", password: "" })
   const handleChange = (e) => {
     setCreds({ ...creds, [e.target.id]: e.target.value })
@@ -18,7 +20,9 @@ const Signup = (props) => {
     .then((res) => {
       if (res.success === true) {
         props.showAlert("Account Created Successfully","success")
-        setTimeout(()=>window.location.href = '/',1000)
+        setTimeout(()=>{
+          navigate('/login');
+        },1000)
       } else {
       props.showAlert("Error: " + res.errors[0].msg, "error");
     }

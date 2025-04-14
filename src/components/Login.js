@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const Login = (props) => {
+    const navigate = useNavigate();
     const [creds, setCreds] = useState({ email: '', password: '' })
     const onSubmit = (e) => {
         e.preventDefault()
@@ -17,7 +19,9 @@ const Login = (props) => {
             }
             localStorage.setItem("token", res.authToken)
             props.showAlert('Login successful',"success")
-            setTimeout(()=>window.location.href = '/',1000)
+            setTimeout(()=> {
+                navigate('/');
+            },1000)
         })
     }
     const handleChange = (e) => {
