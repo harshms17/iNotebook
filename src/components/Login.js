@@ -1,7 +1,4 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
-
-const navigate = useNavigate();
 
 const Login = (props) => {
     const [creds, setCreds] = useState({ email: '', password: '' })
@@ -20,7 +17,7 @@ const Login = (props) => {
             }
             localStorage.setItem("token", res.authToken)
             props.showAlert('Login successful',"success")
-            setTimeout(()=> navigate('/iNotebook'),1000)
+            setTimeout(()=>window.location.href = '/',1000)
         })
     }
     const handleChange = (e) => {

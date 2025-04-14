@@ -1,9 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { noteContext } from '../context/notes/NoteState'
 import NoteItem from './NoteItem'
-import { useNavigate } from 'react-router-dom';
-
-const navigate = useNavigate();
 
 function Notes(props) {
     const { notes, getNotes } = useContext(noteContext)
@@ -11,7 +8,7 @@ function Notes(props) {
         if(localStorage.getItem('token')){
             getNotes()
         }else{
-            navigate('/login');
+            window.location.href='/login'
         }
         // eslint-disable-next-line
     }, [])
