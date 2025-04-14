@@ -8,7 +8,7 @@ function Notes(props) {
         if(localStorage.getItem('token')){
             getNotes()
         }else{
-            window.location.href='/iNotebook/login'
+            window.location.href='/login'
         }
         // eslint-disable-next-line
     }, [])
